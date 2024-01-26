@@ -14,7 +14,7 @@ const returnClarifaiRequestOptions = (imageURL) => {
   const PAT = 'ADD YOU API KEY';
   // Specify the correct user_id/app_id pairings
   // Since you're making inferences outside your app's scope
-  const USER_ID = 'ADD YOUr PROFILE';       
+  const USER_ID = 'ADD YOUR PROFILE';       
   const APP_ID = 'facedect';
   // Change these to whatever model and image URL you want to use
   const MODEL_ID = 'face-detection'; 
