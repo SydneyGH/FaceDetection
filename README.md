@@ -1,4 +1,4 @@
-# FaceDetection-
+# FaceDetection
 A tool built using Javascript that can identify a face in a image 
 
 <!--## Table of Contents -->
