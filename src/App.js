@@ -11,10 +11,10 @@ import './App.css';
 
 const returnClarifaiRequestOptions = (imageURL) => {
   // Your PAT (Personal Access Token) can be found in the portal under Authentification
-  const PAT = 'a8d26edb6d7c4d65970cf943ba7910b7';
+  const PAT = 'ADD YOU API KEY';
   // Specify the correct user_id/app_id pairings
   // Since you're making inferences outside your app's scope
-  const USER_ID = 'sydneygh17';       
+  const USER_ID = 'ADD YOU PROFILE';       
   const APP_ID = 'facedect';
   // Change these to whatever model and image URL you want to use
   const MODEL_ID = 'face-detection'; 
@@ -95,28 +95,7 @@ class App extends Component {
     fetch("https://api.clarifai.com/v2/models/" + 'face-detection' + "/outputs", returnClarifaiRequestOptions(this.state.input))
     .then(response => response.json())
     .then(result => this.displayFaceBox(this.calculateFaceLocation(result)))
-
-      // const regions = result.outputs[0].data.regions;
-
-      // regions.forEach(region => {
-      //     // Accessing and rounding the bounding box values
-      //     const boundingBox = region.region_info.bounding_box;
-      //     const topRow = boundingBox.top_row.toFixed(3);
-      //     const leftCol = boundingBox.left_col.toFixed(3);
-      //     const bottomRow = boundingBox.bottom_row.toFixed(3);
-      //     const rightCol = boundingBox.right_col.toFixed(3);
-
-      //     region.data.concepts.forEach(concept => {
-      //         // Accessing and rounding the concept value
-      //         const name = concept.name;
-      //         const value = concept.value.toFixed(4);
-
-      //         console.log(`${name}: ${value} BBox: ${topRow}, ${leftCol}, ${bottomRow}, ${rightCol}`);
-              
-      //     });
-      // });
-
-  
+ 
   .catch(error => console.log('error', error));
   }
   
