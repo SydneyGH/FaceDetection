@@ -9,46 +9,6 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import './App.css';
 
-<<<<<<< HEAD
-// const returnClarifaiRequestOptions = (imageURL) => {
-//   // Your PAT (Personal Access Token) can be found in the portal under Authentification
-//   const PAT = 'a8d26edb6d7c4d65970cf943ba7910b7';
-//   // Specify the correct user_id/app_id pairings
-//   // Since you're making inferences outside your app's scope
-//   const USER_ID = 'sydneygh17';       
-//   const APP_ID = 'facedect';
-//   // Change these to whatever model and image URL you want to use
-//   const MODEL_ID = 'face-detection'; 
-//   const IMAGE_URL = imageURL;
-
-//   const raw = JSON.stringify({
-//     "user_app_id": {
-//         "user_id": USER_ID,
-//         "app_id": APP_ID
-//     },
-//     "inputs": [
-//         {
-//             "data": {
-//                 "image": {
-//                     "url": IMAGE_URL
-//                 }
-//             }
-//         }
-//     ]
-//   });
-
-//   const requestOptions = {
-//     method: 'POST',
-//     headers: {
-//         'Accept': 'application/json',
-//         'Authorization': 'Key ' + PAT
-//     },
-//     body: raw
-//   };
-
-//   return requestOptions
-// }
-
 const initialState = {
       input: '',
       imageUrl: '',
@@ -62,51 +22,11 @@ const initialState = {
         entries: 0,
         joined: ''
       }
-=======
-const returnClarifaiRequestOptions = (imageURL) => {
-  // Your PAT (Personal Access Token) can be found in the portal under Authentification
-  const PAT = 'ADD YOU API KEY';
-  // Specify the correct user_id/app_id pairings
-  // Since you're making inferences outside your app's scope
-  const USER_ID = 'ADD YOUR PROFILE';       
-  const APP_ID = 'facedect';
-  // Change these to whatever model and image URL you want to use
-  const MODEL_ID = 'face-detection'; 
-  const IMAGE_URL = imageURL;
-
-  const raw = JSON.stringify({
-    "user_app_id": {
-        "user_id": USER_ID,
-        "app_id": APP_ID
-    },
-    "inputs": [
-        {
-            "data": {
-                "image": {
-                    "url": IMAGE_URL
-                }
-            }
-        }
-    ]
-  });
-
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Key ' + PAT
-    },
-    body: raw
-  };
-
-  return requestOptions
->>>>>>> 8379e86a2883ca805001a2ebca1866d5242622f8
 }
 
 class App extends Component {
   constructor() {
     super();
-<<<<<<< HEAD
     this.state = initialState;
   }
 
@@ -175,59 +95,6 @@ onButtonSubmit = () => {
   onRouteChange = (route) => {
     if (route === 'signout'){
       this.setState({initialState})
-=======
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: {},
-      route: 'signin',
-      isSignedIn: false,
-      // user: {
-      //   id: '',
-      //   name: '',
-      //   email: '',
-      //   entries: 0,
-      //   joined: ''
-      // }
-    }
-  }
-
-  calculateFaceLocation = (data) => {
-    const regions = data.outputs[0].data.regions[0].region_info.bounding_box;
-    const image = document.getElementById('inputImage');
-    const width = Number(image.width);
-    const height = Number(image.height);
-    return{
-      leftCol: regions.left_col * width,
-      topRow: regions.top_row * height,
-      rightCol: width - (regions.right_col * width),
-      bottomRow: height - (regions.bottom_row * height)
-    }
-  }
-
-  displayFaceBox = (box) => {
-    this.setState({box:box});
-  }
-
-  onInputChange = (event) => {
-    this.setState({input: event.target.value});
-  }
-
-  onButtonSubmit = () => {
-    this.setState({imageUrl: this.state.input});
-   
-    // // app.models.predict('face-detection', this.state.input)
-    fetch("https://api.clarifai.com/v2/models/" + 'face-detection' + "/outputs", returnClarifaiRequestOptions(this.state.input))
-    .then(response => response.json())
-    .then(result => this.displayFaceBox(this.calculateFaceLocation(result)))
- 
-  .catch(error => console.log('error', error));
-  }
-  
-  onRouteChange = (route) => {
-    if (route === 'signout'){
-      this.setState({isSignedIn: false})
->>>>>>> 8379e86a2883ca805001a2ebca1866d5242622f8
     } else if (route === 'home'){
       this.setState({isSignedIn: true})
     }
@@ -246,11 +113,7 @@ onButtonSubmit = () => {
         {route === 'home' 
           ? <div>
               <Logo />
-<<<<<<< HEAD
               <Rank name={this.state.user.name} entries={this.state.user.entries}/>
-=======
-              <Rank />
->>>>>>> 8379e86a2883ca805001a2ebca1866d5242622f8
               <ImageLinkForm 
                 onInputChange={this.onInputChange} 
                 onButtonSubmit={this.onButtonSubmit} />
@@ -258,13 +121,8 @@ onButtonSubmit = () => {
             </div>
           : (
             route === 'signin'
-<<<<<<< HEAD
             ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
             : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-=======
-            ? <Signin onRouteChange={this.onRouteChange}/>
-            : <Register onRouteChange={this.onRouteChange}/>
->>>>>>> 8379e86a2883ca805001a2ebca1866d5242622f8
             ) 
         }
       
